@@ -1,0 +1,35 @@
+aid: apache-geode
+name: Apache Geode
+description: >-
+  Apache Geode is an in-memory data management platform that provides real-time, consistent access to data-intensive applications throughout widely distributed cloud architectures. It pools memory, CPU, network resources, and local disk storage across multiple processes.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - In-Memory
+  - Data Grid
+  - Caching
+  - Distributed Systems
+created: '2026-03-16'
+modified: '2026-03-16'
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/apache-geode/refs/heads/main/apis.yml
+specificationVersion: '0.19'
+apis:
+  - aid: apache-geode:apache-geode-rest-api
+    name: Apache Geode REST API
+    description: >-
+      Geode provides a REST API for data access and cluster management, a Java client API for cache operations, Continuous Query API, Function Execution API, and OQL query language, plus .NET and C++ native clients.
+    humanURL: https://geode.apache.org/docs/
+    tags:
+      - REST
+      - Cache
+      - In-Memory
+      - Data Grid
+    properties:
+      - type: Documentation
+        url: https://geode.apache.org/docs/
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
