@@ -7,10 +7,10 @@ position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - In-Memory
-  - Data Grid
   - Caching
+  - Data Grid
   - Distributed Systems
+  - In-Memory
 created: '2026-03-16'
 modified: '2026-03-16'
 url: >-
@@ -23,10 +23,10 @@ apis:
       Geode provides a REST API for data access and cluster management, a Java client API for cache operations, Continuous Query API, Function Execution API, and OQL query language, plus .NET and C++ native clients.
     humanURL: https://geode.apache.org/docs/
     tags:
-      - REST
       - Cache
-      - In-Memory
       - Data Grid
+      - In-Memory
+      - REST
     properties:
       - type: Documentation
         url: https://geode.apache.org/docs/
