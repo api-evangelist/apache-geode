@@ -1,0 +1,6 @@
+{
+  "name": "orders",
+  "type": "PARTITION",
+  "keyConstraint": "example-value",
+  "valueConstraint": "example-value"
+}

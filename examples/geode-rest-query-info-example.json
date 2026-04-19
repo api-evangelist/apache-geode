@@ -1,0 +1,4 @@
+{
+  "id": "getPendingOrders",
+  "oql": "SELECT * FROM /orders WHERE status='PENDING'"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-geode/refs/heads/main/json-structure/geode-rest-query-info-structure.json",
+  "name": "QueryInfo",
+  "description": "Named OQL query metadata",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique query identifier"
+    },
+    "oql": {
+      "type": "string",
+      "description": "OQL query string"
+    }
+  }
+}

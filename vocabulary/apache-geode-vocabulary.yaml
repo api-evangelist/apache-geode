@@ -1,0 +1,126 @@
+vocabulary: "1.0.0"
+info:
+  provider: "Apache Geode"
+  description: "Vocabulary taxonomy for Apache Geode in-memory data grid covering regions, queries, functions, and cluster management."
+  created: "2026-04-19"
+  modified: "2026-04-19"
+operational:
+  apis:
+    - namespace: geode-rest
+      version: "1.15.0"
+      baseUrl: "http://localhost:8080"
+      status: active
+      description: Apache Geode REST API
+  resources:
+    - name: regions
+      apis: [geode-rest]
+      actions: [list, get, create, update, delete, clear]
+    - name: entries
+      apis: [geode-rest]
+      actions: [get, create, update, delete]
+    - name: queries
+      apis: [geode-rest]
+      actions: [list, create, execute]
+    - name: functions
+      apis: [geode-rest]
+      actions: [list, execute]
+    - name: servers
+      apis: [geode-rest]
+      actions: [list]
+  actions:
+    - name: list
+      httpMethods: [GET]
+      pattern: read
+    - name: get
+      httpMethods: [GET]
+      pattern: read
+    - name: create
+      httpMethods: [POST]
+      pattern: write
+    - name: update
+      httpMethods: [PUT]
+      pattern: write
+    - name: delete
+      httpMethods: [DELETE]
+      pattern: destructive
+    - name: execute
+      httpMethods: [GET, POST]
+      pattern: query
+    - name: clear
+      httpMethods: [DELETE]
+      pattern: destructive
+  schemas:
+    core:
+      - name: RegionInfo
+        description: Metadata about a Geode region
+      - name: RegionListResponse
+        description: Collection of region descriptors
+      - name: QueryInfo
+        description: Named OQL query metadata
+      - name: QueryResult
+        description: OQL query execution results
+      - name: FunctionResult
+        description: Server-side function execution results
+  parameters:
+    identifiers:
+      - name: region
+        description: Geode region name
+      - name: key
+        description: Region entry key
+      - name: functionId
+        description: Server-side function identifier
+    filters:
+      - name: q
+        description: OQL query string
+  authentication:
+    schemes:
+      - type: BasicAuth
+        description: HTTP Basic authentication for Geode REST API
+capability:
+  workflows:
+    - name: Data Management
+      file: capabilities/geode-data-management.yaml
+      description: Manage in-memory data with regions, queries, and functions
+      apis: [geode-rest]
+      toolCount: 4
+      personas: [Application Developer, Platform Engineer]
+      domains: [Data Management, Caching]
+  personas:
+    - id: application-developer
+      name: Application Developer
+      description: Developers using Geode as a fast data store for applications
+      workflows: [Data Management]
+    - id: platform-engineer
+      name: Platform Engineer
+      description: Engineers managing the Geode cluster infrastructure
+      workflows: [Data Management]
+  domains:
+    - name: Data Management
+      description: Region CRUD operations, OQL queries, and function execution
+    - name: Caching
+      description: High-performance in-memory data caching and distribution
+  namespaces:
+    - name: geode-rest
+      type: consumed
+    - name: geode-management-api
+      type: rest-exposed
+      port: 8080
+    - name: geode-management-mcp
+      type: mcp-exposed
+      port: 9090
+  binds:
+    - name: GEODE_REST_URL
+      workflows: [Data Management]
+crossReference:
+  - resource: regions
+    operations: [list-regions, get-region-data, get-region-keys]
+    workflows: [Data Management]
+    personas: [Application Developer, Platform Engineer]
+  - resource: queries
+    operations: [execute-adhoc-query]
+    workflows: [Data Management]
+    personas: [Application Developer]
+  - resource: functions
+    operations: [list-functions]
+    workflows: [Data Management]
+    personas: [Application Developer, Platform Engineer]

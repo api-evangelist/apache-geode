@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-geode/refs/heads/main/json-structure/geode-rest-region-info-structure.json",
+  "name": "RegionInfo",
+  "description": "Metadata about a Geode region",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Region name"
+    },
+    "type": {
+      "type": "string",
+      "description": "Region type (REPLICATE, PARTITION, etc.)"
+    },
+    "keyConstraint": {
+      "type": "string",
+      "description": "Java class constraint for keys, or null"
+    },
+    "valueConstraint": {
+      "type": "string",
+      "description": "Java class constraint for values, or null"
+    }
+  }
+}

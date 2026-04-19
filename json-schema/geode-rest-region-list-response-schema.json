@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-geode/refs/heads/main/json-schema/geode-rest-region-list-response-schema.json",
+  "title": "RegionListResponse",
+  "description": "Response containing list of all Geode regions",
+  "type": "object",
+  "properties": {
+    "regions": {
+      "type": "array",
+      "description": "List of region descriptors",
+      "items": {
+        "$ref": "#/components/schemas/RegionInfo"
+      }
+    }
+  }
+}

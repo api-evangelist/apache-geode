@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-geode/refs/heads/main/json-structure/geode-rest-query-result-structure.json",
+  "name": "QueryResult",
+  "description": "Results from an OQL query execution",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "array",
+      "description": "Query result objects"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-geode/refs/heads/main/json-schema/geode-rest-region-data-schema.json",
+  "title": "RegionData",
+  "description": "Data entries from a Geode region",
+  "type": "object",
+  "additionalProperties": "True"
+}

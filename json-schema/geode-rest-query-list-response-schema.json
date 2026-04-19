@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-geode/refs/heads/main/json-schema/geode-rest-query-list-response-schema.json",
+  "title": "QueryListResponse",
+  "description": "Response containing list of saved OQL queries",
+  "type": "object",
+  "properties": {
+    "queries": {
+      "type": "array",
+      "description": "List of saved queries",
+      "items": {
+        "$ref": "#/components/schemas/QueryInfo"
+      }
+    }
+  }
+}

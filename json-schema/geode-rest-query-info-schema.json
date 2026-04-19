@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-geode/refs/heads/main/json-schema/geode-rest-query-info-schema.json",
+  "title": "QueryInfo",
+  "description": "Named OQL query metadata",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique query identifier",
+      "example": "getPendingOrders"
+    },
+    "oql": {
+      "type": "string",
+      "description": "OQL query string",
+      "example": "SELECT * FROM /orders WHERE status='PENDING'"
+    }
+  }
+}

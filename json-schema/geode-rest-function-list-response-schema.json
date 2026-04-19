@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-geode/refs/heads/main/json-schema/geode-rest-function-list-response-schema.json",
+  "title": "FunctionListResponse",
+  "description": "Response containing list of available functions",
+  "type": "object",
+  "properties": {
+    "functions": {
+      "type": "array",
+      "description": "List of function IDs",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "calculateTotals",
+        "cleanupExpired"
+      ]
+    }
+  }
+}

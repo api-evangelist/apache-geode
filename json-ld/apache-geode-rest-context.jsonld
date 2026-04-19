@@ -1,0 +1,64 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "geode": "https://geode.apache.org/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "RegionInfo": "geode:RegionInfo",
+    "name": "schema:name",
+    "type": {
+      "@id": "geode:type",
+      "@type": "xsd:string"
+    },
+    "keyConstraint": {
+      "@id": "geode:keyConstraint",
+      "@type": "xsd:string"
+    },
+    "valueConstraint": {
+      "@id": "geode:valueConstraint",
+      "@type": "xsd:string"
+    },
+    "FunctionResult": "geode:FunctionResult",
+    "result": {
+      "@id": "geode:result",
+      "@type": "@set"
+    },
+    "RegionData": "geode:RegionData",
+    "QueryResult": "geode:QueryResult",
+    "RegionListResponse": "geode:RegionListResponse",
+    "regions": {
+      "@id": "geode:regions",
+      "@type": "@set"
+    },
+    "FunctionListResponse": "geode:FunctionListResponse",
+    "functions": {
+      "@id": "geode:functions",
+      "@type": "@set"
+    },
+    "KeyListResponse": "geode:KeyListResponse",
+    "keys": {
+      "@id": "geode:keys",
+      "@type": "@set"
+    },
+    "ServerListResponse": "geode:ServerListResponse",
+    "servers": {
+      "@id": "geode:servers",
+      "@type": "@set"
+    },
+    "QueryInfo": "geode:QueryInfo",
+    "id": {
+      "@id": "geode:id",
+      "@type": "xsd:string"
+    },
+    "oql": {
+      "@id": "geode:oql",
+      "@type": "xsd:string"
+    },
+    "QueryListResponse": "geode:QueryListResponse",
+    "queries": {
+      "@id": "geode:queries",
+      "@type": "@set"
+    }
+  }
+}

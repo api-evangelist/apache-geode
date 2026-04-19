@@ -1,0 +1,155 @@
+naftiko: "1.0.0-alpha1"
+info:
+  label: "Apache Geode REST API"
+  description: "REST API for managing data in Apache Geode in-memory data grid including region operations, OQL queries, and function execution."
+  tags:
+    - Apache Geode
+    - In-Memory Data Grid
+    - Caching
+    - Distributed Systems
+  created: "2026-04-19"
+  modified: "2026-04-19"
+binds:
+  - namespace: env
+    keys:
+      GEODE_REST_URL: GEODE_REST_URL
+capability:
+  consumes:
+    - type: http
+      namespace: geode-rest
+      baseUri: "http://localhost:8080"
+      description: "Apache Geode REST API"
+      resources:
+        - name: regions
+          path: /geode/v1
+          description: Geode region management
+          operations:
+            - name: list-regions
+              method: GET
+              description: List all Geode regions
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-region-data
+              method: GET
+              description: Get data from a region
+              inputParameters:
+                - name: region
+                  in: path
+                  type: string
+                  required: true
+                  description: Region name
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-region-keys
+              method: GET
+              description: Get all keys from a region
+              inputParameters:
+                - name: region
+                  in: path
+                  type: string
+                  required: true
+                  description: Region name
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: queries
+          path: /geode/v1/queries
+          description: OQL query management
+          operations:
+            - name: execute-adhoc-query
+              method: GET
+              description: Execute an OQL query
+              inputParameters:
+                - name: q
+                  in: query
+                  type: string
+                  required: true
+                  description: OQL query string
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: functions
+          path: /geode/v1/functions
+          description: Server-side function execution
+          operations:
+            - name: list-functions
+              method: GET
+              description: List available Geode functions
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: geode-rest-exposed
+      resources:
+        - path: /v1/regions
+          name: regions
+          description: Geode region management
+          operations:
+            - method: GET
+              name: list-regions
+              description: List all Geode regions
+              call: "geode-rest.list-regions"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+    - type: mcp
+      port: 9100
+      namespace: geode-rest-mcp
+      transport: http
+      tools:
+        - name: list-geode-regions
+          description: List all regions in the Geode data grid
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "geode-rest.list-regions"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-region-keys
+          description: Get all keys from a Geode region
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "geode-rest.get-region-keys"
+          with:
+            region: "tools.region"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: execute-oql-query
+          description: Execute an OQL query against Geode data
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "geode-rest.execute-adhoc-query"
+          with:
+            q: "tools.query"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-geode-functions
+          description: List all functions available in the Geode cluster
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "geode-rest.list-functions"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-geode/refs/heads/main/json-schema/geode-rest-function-result-schema.json",
+  "title": "FunctionResult",
+  "description": "Results from function execution",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "array",
+      "description": "Function return values",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

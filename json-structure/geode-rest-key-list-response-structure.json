@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-geode/refs/heads/main/json-structure/geode-rest-key-list-response-structure.json",
+  "name": "KeyListResponse",
+  "description": "Response containing all keys in a region",
+  "type": "object",
+  "properties": {
+    "keys": {
+      "type": "array",
+      "description": "List of region keys"
+    }
+  }
+}

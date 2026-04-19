@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-geode/refs/heads/main/json-structure/geode-rest-query-list-response-structure.json",
+  "name": "QueryListResponse",
+  "description": "Response containing list of saved OQL queries",
+  "type": "object",
+  "properties": {
+    "queries": {
+      "type": "array",
+      "description": "List of saved queries"
+    }
+  }
+}

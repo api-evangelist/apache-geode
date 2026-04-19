@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-geode/refs/heads/main/json-schema/geode-rest-key-list-response-schema.json",
+  "title": "KeyListResponse",
+  "description": "Response containing all keys in a region",
+  "type": "object",
+  "properties": {
+    "keys": {
+      "type": "array",
+      "description": "List of region keys",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "order-001",
+        "order-002",
+        "order-003"
+      ]
+    }
+  }
+}

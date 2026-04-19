@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-geode/refs/heads/main/json-structure/geode-rest-server-list-response-structure.json",
+  "name": "ServerListResponse",
+  "description": "Response containing list of Geode cache servers",
+  "type": "object",
+  "properties": {
+    "servers": {
+      "type": "array",
+      "description": "List of server addresses"
+    }
+  }
+}

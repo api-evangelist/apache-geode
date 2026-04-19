@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-geode/refs/heads/main/json-structure/geode-rest-function-result-structure.json",
+  "name": "FunctionResult",
+  "description": "Results from function execution",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "array",
+      "description": "Function return values"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-geode/refs/heads/main/json-schema/geode-rest-server-list-response-schema.json",
+  "title": "ServerListResponse",
+  "description": "Response containing list of Geode cache servers",
+  "type": "object",
+  "properties": {
+    "servers": {
+      "type": "array",
+      "description": "List of server addresses",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "localhost:40404",
+        "geode-server-02:40404"
+      ]
+    }
+  }
+}

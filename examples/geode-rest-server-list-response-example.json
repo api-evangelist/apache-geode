@@ -1,0 +1,6 @@
+{
+  "servers": [
+    "localhost:40404",
+    "geode-server-02:40404"
+  ]
+}

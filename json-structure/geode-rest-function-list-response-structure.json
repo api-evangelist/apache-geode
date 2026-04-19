@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-geode/refs/heads/main/json-structure/geode-rest-function-list-response-structure.json",
+  "name": "FunctionListResponse",
+  "description": "Response containing list of available functions",
+  "type": "object",
+  "properties": {
+    "functions": {
+      "type": "array",
+      "description": "List of function IDs"
+    }
+  }
+}
