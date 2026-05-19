@@ -1,0 +1,151 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache Geode REST API — Queries
+  description: 'Apache Geode REST API — Queries. 3 operations. Lead operation: Apache Geode List Saved Queries. Self-contained
+    Naftiko capability covering one Apache Geode business surface.'
+  tags:
+  - Apache Geode
+  - Queries
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APACHE_GEODE_API_KEY: APACHE_GEODE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-queries
+    baseUri: http://localhost:8080
+    description: Apache Geode REST API — Queries business capability. Self-contained, no shared references.
+    resources:
+    - name: geode-v1-queries
+      path: /geode/v1/queries
+      operations:
+      - name: listqueries
+        method: GET
+        description: Apache Geode List Saved Queries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createquery
+        method: POST
+        description: Apache Geode Create Named Query
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: query
+          type: string
+          description: Unique query identifier
+          required: true
+        - name: q
+          in: query
+          type: string
+          description: OQL query string
+          required: true
+    - name: geode-v1-queries-adhoc
+      path: /geode/v1/queries/adhoc
+      operations:
+      - name: executeadhocquery
+        method: GET
+        description: Apache Geode Execute Ad-Hoc Query
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: OQL query string to execute
+          required: true
+  exposes:
+  - type: rest
+    namespace: rest-queries-rest
+    port: 8080
+    description: REST adapter for Apache Geode REST API — Queries. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/geode/v1/queries
+      name: geode-v1-queries
+      description: REST surface for geode-v1-queries.
+      operations:
+      - method: GET
+        name: listqueries
+        description: Apache Geode List Saved Queries
+        call: rest-queries.listqueries
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createquery
+        description: Apache Geode Create Named Query
+        call: rest-queries.createquery
+        with:
+          id: rest.id
+          q: rest.q
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/geode/v1/queries/adhoc
+      name: geode-v1-queries-adhoc
+      description: REST surface for geode-v1-queries-adhoc.
+      operations:
+      - method: GET
+        name: executeadhocquery
+        description: Apache Geode Execute Ad-Hoc Query
+        call: rest-queries.executeadhocquery
+        with:
+          q: rest.q
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-queries-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache Geode REST API — Queries. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: apache-geode-list-saved-queries
+      description: Apache Geode List Saved Queries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-queries.listqueries
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-geode-create-named-query
+      description: Apache Geode Create Named Query
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: rest-queries.createquery
+      with:
+        id: tools.id
+        q: tools.q
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-geode-execute-ad-hoc
+      description: Apache Geode Execute Ad-Hoc Query
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-queries.executeadhocquery
+      with:
+        q: tools.q
+      outputParameters:
+      - type: object
+        mapping: $.

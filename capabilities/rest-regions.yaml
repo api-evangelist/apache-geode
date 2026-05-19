@@ -1,0 +1,326 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache Geode REST API — Regions
+  description: 'Apache Geode REST API — Regions. 7 operations. Lead operation: Apache Geode List All Regions. Self-contained
+    Naftiko capability covering one Apache Geode business surface.'
+  tags:
+  - Apache Geode
+  - Regions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APACHE_GEODE_API_KEY: APACHE_GEODE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-regions
+    baseUri: http://localhost:8080
+    description: Apache Geode REST API — Regions business capability. Self-contained, no shared references.
+    resources:
+    - name: geode-v1
+      path: /geode/v1
+      operations:
+      - name: listregions
+        method: GET
+        description: Apache Geode List All Regions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: geode-v1-region
+      path: /geode/v1/{region}
+      operations:
+      - name: getregiondata
+        method: GET
+        description: Apache Geode Get Region Data
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: region
+          in: path
+          type: string
+          description: The name of the Geode region
+          required: true
+      - name: clearregion
+        method: DELETE
+        description: Apache Geode Clear Region
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: region
+          in: path
+          type: string
+          description: The name of the Geode region to clear
+          required: true
+    - name: geode-v1-region-keys
+      path: /geode/v1/{region}/keys
+      operations:
+      - name: getregionkeys
+        method: GET
+        description: Apache Geode Get Region Keys
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: region
+          in: path
+          type: string
+          description: The name of the Geode region
+          required: true
+    - name: geode-v1-region-key
+      path: /geode/v1/{region}/{key}
+      operations:
+      - name: getregionentry
+        method: GET
+        description: Apache Geode Get Region Entry
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: region
+          in: path
+          type: string
+          description: The name of the Geode region
+          required: true
+        - name: key
+          in: path
+          type: string
+          description: The entry key
+          required: true
+      - name: updateregionentry
+        method: PUT
+        description: Apache Geode Update Region Entry
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: region
+          in: path
+          type: string
+          description: The name of the Geode region
+          required: true
+        - name: key
+          in: path
+          type: string
+          description: The entry key
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteregionentry
+        method: DELETE
+        description: Apache Geode Delete Region Entry
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: region
+          in: path
+          type: string
+          description: The name of the Geode region
+          required: true
+        - name: key
+          in: path
+          type: string
+          description: The entry key to delete
+          required: true
+  exposes:
+  - type: rest
+    namespace: rest-regions-rest
+    port: 8080
+    description: REST adapter for Apache Geode REST API — Regions. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/geode/v1
+      name: geode-v1
+      description: REST surface for geode-v1.
+      operations:
+      - method: GET
+        name: listregions
+        description: Apache Geode List All Regions
+        call: rest-regions.listregions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/geode/v1/{region}
+      name: geode-v1-region
+      description: REST surface for geode-v1-region.
+      operations:
+      - method: GET
+        name: getregiondata
+        description: Apache Geode Get Region Data
+        call: rest-regions.getregiondata
+        with:
+          region: rest.region
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: clearregion
+        description: Apache Geode Clear Region
+        call: rest-regions.clearregion
+        with:
+          region: rest.region
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/geode/v1/{region}/keys
+      name: geode-v1-region-keys
+      description: REST surface for geode-v1-region-keys.
+      operations:
+      - method: GET
+        name: getregionkeys
+        description: Apache Geode Get Region Keys
+        call: rest-regions.getregionkeys
+        with:
+          region: rest.region
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/geode/v1/{region}/{key}
+      name: geode-v1-region-key
+      description: REST surface for geode-v1-region-key.
+      operations:
+      - method: GET
+        name: getregionentry
+        description: Apache Geode Get Region Entry
+        call: rest-regions.getregionentry
+        with:
+          region: rest.region
+          key: rest.key
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateregionentry
+        description: Apache Geode Update Region Entry
+        call: rest-regions.updateregionentry
+        with:
+          region: rest.region
+          key: rest.key
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteregionentry
+        description: Apache Geode Delete Region Entry
+        call: rest-regions.deleteregionentry
+        with:
+          region: rest.region
+          key: rest.key
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-regions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache Geode REST API — Regions. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: apache-geode-list-all-regions
+      description: Apache Geode List All Regions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-regions.listregions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-geode-get-region-data
+      description: Apache Geode Get Region Data
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-regions.getregiondata
+      with:
+        region: tools.region
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-geode-clear-region
+      description: Apache Geode Clear Region
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: rest-regions.clearregion
+      with:
+        region: tools.region
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-geode-get-region-keys
+      description: Apache Geode Get Region Keys
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-regions.getregionkeys
+      with:
+        region: tools.region
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-geode-get-region-entry
+      description: Apache Geode Get Region Entry
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-regions.getregionentry
+      with:
+        region: tools.region
+        key: tools.key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-geode-update-region-entry
+      description: Apache Geode Update Region Entry
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: rest-regions.updateregionentry
+      with:
+        region: tools.region
+        key: tools.key
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-geode-delete-region-entry
+      description: Apache Geode Delete Region Entry
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: rest-regions.deleteregionentry
+      with:
+        region: tools.region
+        key: tools.key
+      outputParameters:
+      - type: object
+        mapping: $.
