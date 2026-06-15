@@ -1,0 +1,1468 @@
+{
+  "item": [
+    {
+      "id": "f9642d4f-983c-4021-9195-a77267515bde",
+      "name": "Regions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "54540243-e241-499b-a51f-f25d6ee1c1fe",
+          "name": "Apache Geode List All Regions",
+          "request": {
+            "name": "Apache Geode List All Regions",
+            "description": {
+              "content": "List all regions available in the Apache Geode data grid.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geode",
+                "v1"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c14d42f4-54da-48f9-b4e4-92513d33c51e",
+              "name": "List of all regions returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"regions\": [\n    {\n      \"name\": \"orders\",\n      \"type\": \"REPLICATE\",\n      \"keyConstraint\": null,\n      \"valueConstraint\": null\n    },\n    {\n      \"name\": \"customers\",\n      \"type\": \"PARTITION\",\n      \"keyConstraint\": null,\n      \"valueConstraint\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "afd76737-d9c3-4a71-a7b7-31febf2b4225",
+          "name": "Apache Geode Get Region Data",
+          "request": {
+            "name": "Apache Geode Get Region Data",
+            "description": {
+              "content": "Retrieve all data from a specific region in the Geode data grid.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geode",
+                "v1",
+                ":region"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "region",
+                  "description": "(Required) The name of the Geode region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b8e65ba4-74df-41d2-b732-0cc4dbb1de92",
+              "name": "Region data retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    ":region"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "region",
+                      "description": "(Required) The name of the Geode region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 704\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d13371c9-a61b-463a-bdf5-6b153eb61e3d",
+              "name": "Region not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    ":region"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "region",
+                      "description": "(Required) The name of the Geode region"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43187e85-fed2-4404-9b16-dcf81d155624",
+          "name": "Apache Geode Clear Region",
+          "request": {
+            "name": "Apache Geode Clear Region",
+            "description": {
+              "content": "Delete all entries from a region.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geode",
+                "v1",
+                ":region"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "region",
+                  "description": "(Required) The name of the Geode region to clear"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69333f91-2315-457c-aeb9-d7f9337db4f9",
+              "name": "Region cleared successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    ":region"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "region",
+                      "description": "(Required) The name of the Geode region to clear"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c6977f94-b05b-4113-9404-abeb4b88a4c1",
+          "name": "Apache Geode Get Region Keys",
+          "request": {
+            "name": "Apache Geode Get Region Keys",
+            "description": {
+              "content": "Retrieve all keys from a specific region.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geode",
+                "v1",
+                ":region",
+                "keys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "region",
+                  "description": "(Required) The name of the Geode region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3f9d36e0-903a-4b54-8b14-f7d130141874",
+              "name": "Region keys retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    ":region",
+                    "keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "region",
+                      "description": "(Required) The name of the Geode region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"keys\": [\n    \"order-001\",\n    \"order-002\",\n    \"order-003\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f9c096c3-4499-45ef-a6af-966d9e23d082",
+          "name": "Apache Geode Get Region Entry",
+          "request": {
+            "name": "Apache Geode Get Region Entry",
+            "description": {
+              "content": "Retrieve a specific key-value entry from a region.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geode",
+                "v1",
+                ":region",
+                ":key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "region",
+                  "description": "(Required) The name of the Geode region"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "key",
+                  "description": "(Required) The entry key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b7bdaa68-a168-42d3-b366-d8e9113807c4",
+              "name": "Entry retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    ":region",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "region",
+                      "description": "(Required) The name of the Geode region"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The entry key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "298e4691-bf18-4535-a35c-ee162caa7a99",
+              "name": "Entry not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    ":region",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "region",
+                      "description": "(Required) The name of the Geode region"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The entry key"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "74e67124-c65f-40f1-a027-7d6c0cc08c8a",
+          "name": "Apache Geode Update Region Entry",
+          "request": {
+            "name": "Apache Geode Update Region Entry",
+            "description": {
+              "content": "Create or update an entry in a region.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geode",
+                "v1",
+                ":region",
+                ":key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "region",
+                  "description": "(Required) The name of the Geode region"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "key",
+                  "description": "(Required) The entry key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8433c4b1-daa6-41c7-bcba-e84e95b15b04",
+              "name": "Entry updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    ":region",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "region",
+                      "description": "(Required) The name of the Geode region"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The entry key"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d039d504-87b9-4104-84fb-64ed659de242",
+          "name": "Apache Geode Delete Region Entry",
+          "request": {
+            "name": "Apache Geode Delete Region Entry",
+            "description": {
+              "content": "Remove a specific entry from a region.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geode",
+                "v1",
+                ":region",
+                ":key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "region",
+                  "description": "(Required) The name of the Geode region"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "key",
+                  "description": "(Required) The entry key to delete"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "afd4887e-5dfc-4d66-8ce3-e9d6e47fc560",
+              "name": "Entry deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    ":region",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "region",
+                      "description": "(Required) The name of the Geode region"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The entry key to delete"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "53f60631-5620-452f-a713-cc53022f5087",
+              "name": "Entry not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    ":region",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "region",
+                      "description": "(Required) The name of the Geode region"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) The entry key to delete"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "dc24d37c-824e-4122-82a7-9548c5a36266",
+      "name": "Queries",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "823aff1e-5522-4423-aedf-8391a6282ffa",
+          "name": "Apache Geode List Saved Queries",
+          "request": {
+            "name": "Apache Geode List Saved Queries",
+            "description": {
+              "content": "List all named OQL queries saved in the Geode cluster.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geode",
+                "v1",
+                "queries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e9ff1969-af59-44ad-b560-5f15e64cae80",
+              "name": "Queries listed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    "queries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"queries\": [\n    {\n      \"id\": \"getPendingOrders\",\n      \"oql\": \"SELECT * FROM /orders WHERE status='PENDING'\"\n    },\n    {\n      \"id\": \"getPendingOrders\",\n      \"oql\": \"SELECT * FROM /orders WHERE status='PENDING'\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af7e7ba5-a2ff-4aba-9571-fb3d4ed3b606",
+          "name": "Apache Geode Create Named Query",
+          "request": {
+            "name": "Apache Geode Create Named Query",
+            "description": {
+              "content": "Create and save a named OQL query.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geode",
+                "v1",
+                "queries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) Unique query identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) OQL query string"
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5901c506-eaef-432d-8212-d24a15f92e85",
+              "name": "Query created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    "queries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5cc88e1f-883a-4214-8cfa-4410d9e5fa06",
+              "name": "Query with this ID already exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    "queries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4180f310-dff3-46c9-b066-82727bad499a",
+          "name": "Apache Geode Execute Ad-Hoc Query",
+          "request": {
+            "name": "Apache Geode Execute Ad-Hoc Query",
+            "description": {
+              "content": "Execute an OQL query against the Geode data grid without saving it.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geode",
+                "v1",
+                "queries",
+                "adhoc"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) OQL query string to execute"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2ed78400-30dd-48cb-a6c6-49332afffc13",
+              "name": "Query executed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    "queries",
+                    "adhoc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "SELECT * FROM /orders WHERE status='PENDING'"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "39425b82-cebd-445b-9aad-a18e02643074",
+      "name": "Functions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "77621e4f-fa19-4e66-8023-a0e98f0e3473",
+          "name": "Apache Geode List Available Functions",
+          "request": {
+            "name": "Apache Geode List Available Functions",
+            "description": {
+              "content": "List all functions deployed and available in the Geode cluster.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geode",
+                "v1",
+                "functions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6aebf7a7-abc3-4583-bfd9-9663785d929b",
+              "name": "Functions listed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    "functions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"functions\": [\n    \"calculateTotals\",\n    \"cleanupExpired\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78aec270-0f81-41e5-8be4-25406fcbed65",
+          "name": "Apache Geode Execute Server Function",
+          "request": {
+            "name": "Apache Geode Execute Server Function",
+            "description": {
+              "content": "Execute a named function deployed on the Geode cluster.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geode",
+                "v1",
+                "functions",
+                ":functionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "onRegion",
+                  "value": "<string>",
+                  "description": "Execute function on a specific region"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "functionId",
+                  "description": "(Required) The ID of the function to execute"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "95a5fd75-ff9e-415d-af16-148039591150",
+              "name": "Function executed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    "functions",
+                    ":functionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "onRegion",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionId",
+                      "description": "(Required) The ID of the function to execute"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "4d36389b-298a-4a1c-8e40-f88507145f43",
+      "name": "Administration",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bf7560b9-09c8-4824-8136-dfe6f87c05e4",
+          "name": "Apache Geode Ping Cluster",
+          "request": {
+            "name": "Apache Geode Ping Cluster",
+            "description": {
+              "content": "Health check endpoint to verify the Geode REST API is running.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geode",
+                "v1",
+                "ping"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4de80685-d748-4b64-8580-fff1d551d2d3",
+              "name": "Cluster is healthy and reachable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    "ping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "99e269e6-5347-4595-afad-a9f4f06e87dc",
+          "name": "Apache Geode List Cluster Servers",
+          "request": {
+            "name": "Apache Geode List Cluster Servers",
+            "description": {
+              "content": "List all cache servers in the Geode cluster.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geode",
+                "v1",
+                "servers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4981af03-f439-4bc1-9045-3289465d1cef",
+              "name": "Cluster servers listed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    "servers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"servers\": [\n    \"localhost:40404\",\n    \"geode-server-02:40404\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "caf052d5-8133-476a-8c83-61042841afcf",
+    "name": "Apache Geode REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing data in Apache Geode in-memory data grid, including region operations, OQL queries, function execution, and cluster monitoring.\n\nContact Support:\n Email: dev@geode.apache.org",
+      "type": "text/plain"
+    }
+  }
+}
