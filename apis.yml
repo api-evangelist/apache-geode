@@ -57,7 +57,7 @@ apis:
     properties:
       - type: Documentation
         url: https://geode.apache.org/docs/guide/latest/developing/book_intro.html
-      - type: SDK
+      - type: SDKs
         url: https://search.maven.org/artifact/org.apache.geode/geode-core
         title: Java SDK (Maven Central)
 common:
