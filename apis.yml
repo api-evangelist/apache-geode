@@ -61,6 +61,10 @@ apis:
         url: https://search.maven.org/artifact/org.apache.geode/geode-core
         title: Java SDK (Maven Central)
 common:
+  - type: VulnerabilityDisclosure
+    url: security/apache-geode-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/apache-geode-domain-security.yml
   - type: Documentation
     url: https://geode.apache.org/docs/
   - type: GettingStarted
