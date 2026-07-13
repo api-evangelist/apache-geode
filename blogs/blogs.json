@@ -2,11 +2,13 @@
   "repo": "apache-geode",
   "feeds": [
     {
-      "source": "https://geode.apache.org/blog/",
+      "source": "https://github.com/apache/geode",
+      "feed_url": "https://github.com/apache/geode",
+      "title": "",
       "saved": 0,
-      "error": "HTTP 404 Not Found"
+      "method": "none"
     }
   ],
-  "fetched": "2026-06-27T12:23:40Z",
+  "fetched": "2026-07-11T11:50:51Z",
   "post_count": 0
 }
