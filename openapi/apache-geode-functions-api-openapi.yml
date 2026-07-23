@@ -1,0 +1,91 @@
+openapi: 3.0.3
+info:
+  title: Apache Geode REST Administration Functions API
+  version: 1.15.0
+  description: REST API for accessing and managing data in Apache Geode in-memory data grid, including region operations, OQL queries, function execution, and cluster monitoring.
+  contact:
+    email: dev@geode.apache.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080
+  description: Apache Geode REST API Server
+tags:
+- name: Functions
+paths:
+  /geode/v1/functions:
+    get:
+      operationId: listFunctions
+      summary: Apache Geode List Available Functions
+      description: List all functions deployed and available in the Geode cluster.
+      tags:
+      - Functions
+      responses:
+        '200':
+          description: Functions listed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FunctionListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /geode/v1/functions/{functionId}:
+    post:
+      operationId: executeFunction
+      summary: Apache Geode Execute Server Function
+      description: Execute a named function deployed on the Geode cluster.
+      tags:
+      - Functions
+      parameters:
+      - name: functionId
+        in: path
+        required: true
+        description: The ID of the function to execute
+        schema:
+          type: string
+      - name: onRegion
+        in: query
+        required: false
+        description: Execute function on a specific region
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Function executed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FunctionResult'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    FunctionListResponse:
+      type: object
+      description: Response containing list of available functions
+      properties:
+        functions:
+          type: array
+          description: List of function IDs
+          items:
+            type: string
+          example:
+          - calculateTotals
+          - cleanupExpired
+    FunctionResult:
+      type: object
+      description: Results from function execution
+      properties:
+        result:
+          type: array
+          description: Function return values
+          items:
+            type: object

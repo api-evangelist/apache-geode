@@ -1,0 +1,255 @@
+openapi: 3.0.3
+info:
+  title: Apache Geode REST Administration Regions API
+  version: 1.15.0
+  description: REST API for accessing and managing data in Apache Geode in-memory data grid, including region operations, OQL queries, function execution, and cluster monitoring.
+  contact:
+    email: dev@geode.apache.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080
+  description: Apache Geode REST API Server
+tags:
+- name: Regions
+paths:
+  /geode/v1:
+    get:
+      operationId: listRegions
+      summary: Apache Geode List All Regions
+      description: List all regions available in the Apache Geode data grid.
+      tags:
+      - Regions
+      responses:
+        '200':
+          description: List of all regions returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegionListResponse'
+              examples:
+                ListRegions200Example:
+                  summary: Default listRegions 200 response
+                  x-microcks-default: true
+                  value:
+                    regions:
+                    - name: orders
+                      type: REPLICATE
+                      keyConstraint: null
+                      valueConstraint: null
+                    - name: customers
+                      type: PARTITION
+                      keyConstraint: null
+                      valueConstraint: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /geode/v1/{region}:
+    get:
+      operationId: getRegionData
+      summary: Apache Geode Get Region Data
+      description: Retrieve all data from a specific region in the Geode data grid.
+      tags:
+      - Regions
+      parameters:
+      - name: region
+        in: path
+        required: true
+        description: The name of the Geode region
+        schema:
+          type: string
+          example: orders
+      responses:
+        '200':
+          description: Region data retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegionData'
+        '404':
+          description: Region not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: clearRegion
+      summary: Apache Geode Clear Region
+      description: Delete all entries from a region.
+      tags:
+      - Regions
+      parameters:
+      - name: region
+        in: path
+        required: true
+        description: The name of the Geode region to clear
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Region cleared successfully
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /geode/v1/{region}/keys:
+    get:
+      operationId: getRegionKeys
+      summary: Apache Geode Get Region Keys
+      description: Retrieve all keys from a specific region.
+      tags:
+      - Regions
+      parameters:
+      - name: region
+        in: path
+        required: true
+        description: The name of the Geode region
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Region keys retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeyListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /geode/v1/{region}/{key}:
+    get:
+      operationId: getRegionEntry
+      summary: Apache Geode Get Region Entry
+      description: Retrieve a specific key-value entry from a region.
+      tags:
+      - Regions
+      parameters:
+      - name: region
+        in: path
+        required: true
+        description: The name of the Geode region
+        schema:
+          type: string
+      - name: key
+        in: path
+        required: true
+        description: The entry key
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Entry retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Entry not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      operationId: updateRegionEntry
+      summary: Apache Geode Update Region Entry
+      description: Create or update an entry in a region.
+      tags:
+      - Regions
+      parameters:
+      - name: region
+        in: path
+        required: true
+        description: The name of the Geode region
+        schema:
+          type: string
+      - name: key
+        in: path
+        required: true
+        description: The entry key
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Entry updated successfully
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteRegionEntry
+      summary: Apache Geode Delete Region Entry
+      description: Remove a specific entry from a region.
+      tags:
+      - Regions
+      parameters:
+      - name: region
+        in: path
+        required: true
+        description: The name of the Geode region
+        schema:
+          type: string
+      - name: key
+        in: path
+        required: true
+        description: The entry key to delete
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Entry deleted successfully
+        '404':
+          description: Entry not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    RegionData:
+      type: object
+      description: Data entries from a Geode region
+      additionalProperties: true
+    KeyListResponse:
+      type: object
+      description: Response containing all keys in a region
+      properties:
+        keys:
+          type: array
+          description: List of region keys
+          items:
+            type: string
+          example:
+          - order-001
+          - order-002
+          - order-003
+    RegionListResponse:
+      type: object
+      description: Response containing list of all Geode regions
+      properties:
+        regions:
+          type: array
+          description: List of region descriptors
+          items:
+            $ref: '#/components/schemas/RegionInfo'
+    RegionInfo:
+      type: object
+      description: Metadata about a Geode region
+      properties:
+        name:
+          type: string
+          description: Region name
+          example: orders
+        type:
+          type: string
+          description: Region type (REPLICATE, PARTITION, etc.)
+          example: PARTITION
+        keyConstraint:
+          type: string
+          description: Java class constraint for keys, or null
+          nullable: true
+        valueConstraint:
+          type: string
+          description: Java class constraint for values, or null
+          nullable: true

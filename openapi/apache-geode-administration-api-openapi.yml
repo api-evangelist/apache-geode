@@ -1,0 +1,60 @@
+openapi: 3.0.3
+info:
+  title: Apache Geode REST Administration API
+  version: 1.15.0
+  description: REST API for accessing and managing data in Apache Geode in-memory data grid, including region operations, OQL queries, function execution, and cluster monitoring.
+  contact:
+    email: dev@geode.apache.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080
+  description: Apache Geode REST API Server
+tags:
+- name: Administration
+paths:
+  /geode/v1/ping:
+    get:
+      operationId: pingCluster
+      summary: Apache Geode Ping Cluster
+      description: Health check endpoint to verify the Geode REST API is running.
+      tags:
+      - Administration
+      responses:
+        '200':
+          description: Cluster is healthy and reachable
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /geode/v1/servers:
+    get:
+      operationId: listServers
+      summary: Apache Geode List Cluster Servers
+      description: List all cache servers in the Geode cluster.
+      tags:
+      - Administration
+      responses:
+        '200':
+          description: Cluster servers listed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ServerListResponse:
+      type: object
+      description: Response containing list of Geode cache servers
+      properties:
+        servers:
+          type: array
+          description: List of server addresses
+          items:
+            type: string
+          example:
+          - localhost:40404
+          - geode-server-02:40404

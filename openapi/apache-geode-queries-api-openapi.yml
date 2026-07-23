@@ -1,0 +1,117 @@
+openapi: 3.0.3
+info:
+  title: Apache Geode REST Administration Queries API
+  version: 1.15.0
+  description: REST API for accessing and managing data in Apache Geode in-memory data grid, including region operations, OQL queries, function execution, and cluster monitoring.
+  contact:
+    email: dev@geode.apache.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080
+  description: Apache Geode REST API Server
+tags:
+- name: Queries
+paths:
+  /geode/v1/queries:
+    get:
+      operationId: listQueries
+      summary: Apache Geode List Saved Queries
+      description: List all named OQL queries saved in the Geode cluster.
+      tags:
+      - Queries
+      responses:
+        '200':
+          description: Queries listed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createQuery
+      summary: Apache Geode Create Named Query
+      description: Create and save a named OQL query.
+      tags:
+      - Queries
+      parameters:
+      - name: id
+        in: query
+        required: true
+        description: Unique query identifier
+        schema:
+          type: string
+      - name: q
+        in: query
+        required: true
+        description: OQL query string
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Query created successfully
+        '409':
+          description: Query with this ID already exists
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /geode/v1/queries/adhoc:
+    get:
+      operationId: executeAdhocQuery
+      summary: Apache Geode Execute Ad-Hoc Query
+      description: Execute an OQL query against the Geode data grid without saving it.
+      tags:
+      - Queries
+      parameters:
+      - name: q
+        in: query
+        required: true
+        description: OQL query string to execute
+        schema:
+          type: string
+          example: SELECT * FROM /orders WHERE status='PENDING'
+      responses:
+        '200':
+          description: Query executed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResult'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    QueryInfo:
+      type: object
+      description: Named OQL query metadata
+      properties:
+        id:
+          type: string
+          description: Unique query identifier
+          example: getPendingOrders
+        oql:
+          type: string
+          description: OQL query string
+          example: SELECT * FROM /orders WHERE status='PENDING'
+    QueryListResponse:
+      type: object
+      description: Response containing list of saved OQL queries
+      properties:
+        queries:
+          type: array
+          description: List of saved queries
+          items:
+            $ref: '#/components/schemas/QueryInfo'
+    QueryResult:
+      type: object
+      description: Results from an OQL query execution
+      properties:
+        result:
+          type: array
+          description: Query result objects
+          items:
+            type: object
