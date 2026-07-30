@@ -6,9 +6,21 @@ description: >-
   disk storage across multiple processes, offering a REST API for data access, OQL queries, function execution, and
   cluster management.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/apache-geode.png
 tags:
   - Apache
   - Caching
@@ -21,45 +33,87 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/apache-geode/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: apache-geode:apache-geode-rest-api
-    name: Apache Geode REST API
-    description: >-
-      REST API for accessing and managing data in Apache Geode in-memory data grid, including region operations, OQL
-      queries, function execution, and cluster monitoring.
-    humanURL: https://geode.apache.org/docs/guide/latest/rest_apps/chapter_overview.html
-    baseURL: http://localhost:8080
-    tags:
-      - Cache
-      - Data Grid
-      - In-Memory
-      - OQL
-      - REST
-    properties:
-      - type: Documentation
-        url: https://geode.apache.org/docs/guide/latest/rest_apps/chapter_overview.html
-      - type: OpenAPI
-        url: openapi/apache-geode-rest-openapi.yml
-      - type: JSONSchema
-        url: json-schema/geode-rest-region-info-schema.json
-      - type: JSONLD
-        url: json-ld/apache-geode-rest-context.jsonld
-  - aid: apache-geode:apache-geode-java-api
-    name: Apache Geode Java Client API
-    description: >-
-      Java API for cache operations, continuous queries, function execution, and data serialization in Apache Geode
-      clusters.
-    humanURL: https://geode.apache.org/docs/guide/latest/developing/book_intro.html
-    tags:
-      - Java
-      - SDK
-      - Cache
-      - Continuous Query
-    properties:
-      - type: Documentation
-        url: https://geode.apache.org/docs/guide/latest/developing/book_intro.html
-      - type: SDKs
-        url: https://search.maven.org/artifact/org.apache.geode/geode-core
-        title: Java SDK (Maven Central)
+- aid: apache-geode:apache-geode-java-api
+  name: Apache Geode Java Client API
+  description: >-
+    Java API for cache operations, continuous queries, function execution, and data serialization in Apache
+    Geode clusters.
+  humanURL: https://geode.apache.org/docs/guide/latest/developing/book_intro.html
+  tags:
+  - Java
+  - SDK
+  - Cache
+  - Continuous Query
+  properties:
+  - type: Documentation
+    url: https://geode.apache.org/docs/guide/latest/developing/book_intro.html
+  - type: SDKs
+    url: https://search.maven.org/artifact/org.apache.geode/geode-core
+    title: Java SDK (Maven Central)
+- aid: apache-geode:apache-geode-administration-api
+  name: Apache Geode Administration API
+  description: The Administration API from Apache Geode — 2 operation(s) for administration.
+  humanURL: https://geode.apache.org/docs/guide/latest/rest_apps/chapter_overview.html
+  baseURL: http://localhost:8080
+  tags:
+  - Administration
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-geode-administration-api-openapi.yml
+  - type: Documentation
+    url: https://geode.apache.org/docs/guide/latest/rest_apps/chapter_overview.html
+  - type: JSONSchema
+    url: json-schema/geode-rest-region-info-schema.json
+  - type: JSONLD
+    url: json-ld/apache-geode-rest-context.jsonld
+- aid: apache-geode:apache-geode-functions-api
+  name: Apache Geode Functions API
+  description: The Functions API from Apache Geode — 2 operation(s) for functions.
+  humanURL: https://geode.apache.org/docs/guide/latest/rest_apps/chapter_overview.html
+  baseURL: http://localhost:8080
+  tags:
+  - Functions
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-geode-functions-api-openapi.yml
+  - type: Documentation
+    url: https://geode.apache.org/docs/guide/latest/rest_apps/chapter_overview.html
+  - type: JSONSchema
+    url: json-schema/geode-rest-region-info-schema.json
+  - type: JSONLD
+    url: json-ld/apache-geode-rest-context.jsonld
+- aid: apache-geode:apache-geode-queries-api
+  name: Apache Geode Queries API
+  description: The Queries API from Apache Geode — 2 operation(s) for queries.
+  humanURL: https://geode.apache.org/docs/guide/latest/rest_apps/chapter_overview.html
+  baseURL: http://localhost:8080
+  tags:
+  - Queries
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-geode-queries-api-openapi.yml
+  - type: Documentation
+    url: https://geode.apache.org/docs/guide/latest/rest_apps/chapter_overview.html
+  - type: JSONSchema
+    url: json-schema/geode-rest-region-info-schema.json
+  - type: JSONLD
+    url: json-ld/apache-geode-rest-context.jsonld
+- aid: apache-geode:apache-geode-regions-api
+  name: Apache Geode Regions API
+  description: The Regions API from Apache Geode — 4 operation(s) for regions.
+  humanURL: https://geode.apache.org/docs/guide/latest/rest_apps/chapter_overview.html
+  baseURL: http://localhost:8080
+  tags:
+  - Regions
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-geode-regions-api-openapi.yml
+  - type: Documentation
+    url: https://geode.apache.org/docs/guide/latest/rest_apps/chapter_overview.html
+  - type: JSONSchema
+    url: json-schema/geode-rest-region-info-schema.json
+  - type: JSONLD
+    url: json-ld/apache-geode-rest-context.jsonld
 common:
   - type: AgenticAccess
     url: agentic-access/apache-geode-agentic-access.yml
