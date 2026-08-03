@@ -1,0 +1,20 @@
+{
+  "provider": "apache-geode",
+  "sources": [
+    "apache-geode-administration-api-openapi.yml",
+    "apache-geode-functions-api-openapi.yml",
+    "apache-geode-queries-api-openapi.yml",
+    "apache-geode-regions-api-openapi.yml"
+  ],
+  "outputs": [
+    "apache-geode-administration-api-openapi.yml",
+    "apache-geode-functions-api-openapi.yml",
+    "apache-geode-queries-api-openapi.yml",
+    "apache-geode-regions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

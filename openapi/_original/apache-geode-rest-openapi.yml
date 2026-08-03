@@ -1,0 +1,480 @@
+openapi: 3.0.3
+info:
+  title: Apache Geode REST API
+  version: "1.15.0"
+  description: REST API for accessing and managing data in Apache Geode in-memory data grid, including region operations, OQL queries, function execution, and cluster monitoring.
+  contact:
+    email: dev@geode.apache.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+  - url: http://localhost:8080
+    description: Apache Geode REST API Server
+
+paths:
+  /geode/v1:
+    get:
+      operationId: listRegions
+      summary: Apache Geode List All Regions
+      description: List all regions available in the Apache Geode data grid.
+      tags:
+        - Regions
+      responses:
+        '200':
+          description: List of all regions returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegionListResponse'
+              examples:
+                ListRegions200Example:
+                  summary: Default listRegions 200 response
+                  x-microcks-default: true
+                  value:
+                    regions:
+                      - name: orders
+                        type: REPLICATE
+                        keyConstraint: null
+                        valueConstraint: null
+                      - name: customers
+                        type: PARTITION
+                        keyConstraint: null
+                        valueConstraint: null
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /geode/v1/{region}:
+    get:
+      operationId: getRegionData
+      summary: Apache Geode Get Region Data
+      description: Retrieve all data from a specific region in the Geode data grid.
+      tags:
+        - Regions
+      parameters:
+        - name: region
+          in: path
+          required: true
+          description: The name of the Geode region
+          schema:
+            type: string
+            example: orders
+      responses:
+        '200':
+          description: Region data retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegionData'
+        '404':
+          description: Region not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: clearRegion
+      summary: Apache Geode Clear Region
+      description: Delete all entries from a region.
+      tags:
+        - Regions
+      parameters:
+        - name: region
+          in: path
+          required: true
+          description: The name of the Geode region to clear
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Region cleared successfully
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /geode/v1/{region}/keys:
+    get:
+      operationId: getRegionKeys
+      summary: Apache Geode Get Region Keys
+      description: Retrieve all keys from a specific region.
+      tags:
+        - Regions
+      parameters:
+        - name: region
+          in: path
+          required: true
+          description: The name of the Geode region
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Region keys retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeyListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /geode/v1/{region}/{key}:
+    get:
+      operationId: getRegionEntry
+      summary: Apache Geode Get Region Entry
+      description: Retrieve a specific key-value entry from a region.
+      tags:
+        - Regions
+      parameters:
+        - name: region
+          in: path
+          required: true
+          description: The name of the Geode region
+          schema:
+            type: string
+        - name: key
+          in: path
+          required: true
+          description: The entry key
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Entry retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Entry not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      operationId: updateRegionEntry
+      summary: Apache Geode Update Region Entry
+      description: Create or update an entry in a region.
+      tags:
+        - Regions
+      parameters:
+        - name: region
+          in: path
+          required: true
+          description: The name of the Geode region
+          schema:
+            type: string
+        - name: key
+          in: path
+          required: true
+          description: The entry key
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Entry updated successfully
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteRegionEntry
+      summary: Apache Geode Delete Region Entry
+      description: Remove a specific entry from a region.
+      tags:
+        - Regions
+      parameters:
+        - name: region
+          in: path
+          required: true
+          description: The name of the Geode region
+          schema:
+            type: string
+        - name: key
+          in: path
+          required: true
+          description: The entry key to delete
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Entry deleted successfully
+        '404':
+          description: Entry not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /geode/v1/queries:
+    get:
+      operationId: listQueries
+      summary: Apache Geode List Saved Queries
+      description: List all named OQL queries saved in the Geode cluster.
+      tags:
+        - Queries
+      responses:
+        '200':
+          description: Queries listed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createQuery
+      summary: Apache Geode Create Named Query
+      description: Create and save a named OQL query.
+      tags:
+        - Queries
+      parameters:
+        - name: id
+          in: query
+          required: true
+          description: Unique query identifier
+          schema:
+            type: string
+        - name: q
+          in: query
+          required: true
+          description: OQL query string
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Query created successfully
+        '409':
+          description: Query with this ID already exists
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /geode/v1/queries/adhoc:
+    get:
+      operationId: executeAdhocQuery
+      summary: Apache Geode Execute Ad-Hoc Query
+      description: Execute an OQL query against the Geode data grid without saving it.
+      tags:
+        - Queries
+      parameters:
+        - name: q
+          in: query
+          required: true
+          description: OQL query string to execute
+          schema:
+            type: string
+            example: "SELECT * FROM /orders WHERE status='PENDING'"
+      responses:
+        '200':
+          description: Query executed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResult'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /geode/v1/functions:
+    get:
+      operationId: listFunctions
+      summary: Apache Geode List Available Functions
+      description: List all functions deployed and available in the Geode cluster.
+      tags:
+        - Functions
+      responses:
+        '200':
+          description: Functions listed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FunctionListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /geode/v1/functions/{functionId}:
+    post:
+      operationId: executeFunction
+      summary: Apache Geode Execute Server Function
+      description: Execute a named function deployed on the Geode cluster.
+      tags:
+        - Functions
+      parameters:
+        - name: functionId
+          in: path
+          required: true
+          description: The ID of the function to execute
+          schema:
+            type: string
+        - name: onRegion
+          in: query
+          required: false
+          description: Execute function on a specific region
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Function executed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FunctionResult'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /geode/v1/ping:
+    get:
+      operationId: pingCluster
+      summary: Apache Geode Ping Cluster
+      description: Health check endpoint to verify the Geode REST API is running.
+      tags:
+        - Administration
+      responses:
+        '200':
+          description: Cluster is healthy and reachable
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /geode/v1/servers:
+    get:
+      operationId: listServers
+      summary: Apache Geode List Cluster Servers
+      description: List all cache servers in the Geode cluster.
+      tags:
+        - Administration
+      responses:
+        '200':
+          description: Cluster servers listed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+components:
+  schemas:
+    RegionListResponse:
+      type: object
+      description: Response containing list of all Geode regions
+      properties:
+        regions:
+          type: array
+          description: List of region descriptors
+          items:
+            $ref: '#/components/schemas/RegionInfo'
+
+    RegionInfo:
+      type: object
+      description: Metadata about a Geode region
+      properties:
+        name:
+          type: string
+          description: Region name
+          example: orders
+        type:
+          type: string
+          description: Region type (REPLICATE, PARTITION, etc.)
+          example: PARTITION
+        keyConstraint:
+          type: string
+          description: Java class constraint for keys, or null
+          nullable: true
+        valueConstraint:
+          type: string
+          description: Java class constraint for values, or null
+          nullable: true
+
+    RegionData:
+      type: object
+      description: Data entries from a Geode region
+      additionalProperties: true
+
+    KeyListResponse:
+      type: object
+      description: Response containing all keys in a region
+      properties:
+        keys:
+          type: array
+          description: List of region keys
+          items:
+            type: string
+          example: ["order-001", "order-002", "order-003"]
+
+    QueryListResponse:
+      type: object
+      description: Response containing list of saved OQL queries
+      properties:
+        queries:
+          type: array
+          description: List of saved queries
+          items:
+            $ref: '#/components/schemas/QueryInfo'
+
+    QueryInfo:
+      type: object
+      description: Named OQL query metadata
+      properties:
+        id:
+          type: string
+          description: Unique query identifier
+          example: getPendingOrders
+        oql:
+          type: string
+          description: OQL query string
+          example: "SELECT * FROM /orders WHERE status='PENDING'"
+
+    QueryResult:
+      type: object
+      description: Results from an OQL query execution
+      properties:
+        result:
+          type: array
+          description: Query result objects
+          items:
+            type: object
+
+    FunctionListResponse:
+      type: object
+      description: Response containing list of available functions
+      properties:
+        functions:
+          type: array
+          description: List of function IDs
+          items:
+            type: string
+          example: ["calculateTotals", "cleanupExpired"]
+
+    FunctionResult:
+      type: object
+      description: Results from function execution
+      properties:
+        result:
+          type: array
+          description: Function return values
+          items:
+            type: object
+
+    ServerListResponse:
+      type: object
+      description: Response containing list of Geode cache servers
+      properties:
+        servers:
+          type: array
+          description: List of server addresses
+          items:
+            type: string
+          example: ["localhost:40404", "geode-server-02:40404"]
