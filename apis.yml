@@ -115,6 +115,13 @@ apis:
   - type: JSONLD
     url: json-ld/apache-geode-rest-context.jsonld
 common:
+  - type: Releases
+    url: https://github.com/apache/geode/releases
+  - type: CodeOfConduct
+    url: https://github.com/apache/geode/blob/develop/CODE_OF_CONDUCT.md
+  - type: License
+    name: Apache-2.0
+    url: https://github.com/apache/geode/blob/develop/LICENSE
   - type: AgenticAccess
     url: agentic-access/apache-geode-agentic-access.yml
   - type: VulnerabilityDisclosure
