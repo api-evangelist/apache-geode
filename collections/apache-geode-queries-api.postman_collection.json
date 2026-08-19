@@ -1,0 +1,318 @@
+{
+  "item": [
+    {
+      "id": "1c27309a-9938-4704-91e2-940bfab743f3",
+      "name": "Queries",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d67a7762-f9c9-48f5-b6aa-7f15add78306",
+          "name": "Apache Geode List Saved Queries",
+          "request": {
+            "name": "Apache Geode List Saved Queries",
+            "description": {
+              "content": "List all named OQL queries saved in the Geode cluster.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geode",
+                "v1",
+                "queries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "04a479f5-f0f8-4f4a-8754-4c2ba16153d6",
+              "name": "Queries listed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    "queries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"queries\": [\n    {\n      \"id\": \"getPendingOrders\",\n      \"oql\": \"SELECT * FROM /orders WHERE status='PENDING'\"\n    },\n    {\n      \"id\": \"getPendingOrders\",\n      \"oql\": \"SELECT * FROM /orders WHERE status='PENDING'\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "028ecc59-96c4-4edb-81ee-cbff745e0012",
+          "name": "Apache Geode Create Named Query",
+          "request": {
+            "name": "Apache Geode Create Named Query",
+            "description": {
+              "content": "Create and save a named OQL query.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geode",
+                "v1",
+                "queries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) Unique query identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) OQL query string"
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "36bf9538-e4cc-4c61-9429-07c49101651e",
+              "name": "Query created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    "queries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5f790d7f-6772-49a3-a64a-f32d06ea6ae3",
+              "name": "Query with this ID already exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    "queries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bdd9cc64-bdf8-4d5a-ba45-0c79f962766a",
+          "name": "Apache Geode Execute Ad-Hoc Query",
+          "request": {
+            "name": "Apache Geode Execute Ad-Hoc Query",
+            "description": {
+              "content": "Execute an OQL query against the Geode data grid without saving it.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geode",
+                "v1",
+                "queries",
+                "adhoc"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) OQL query string to execute"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fd6838ab-8b04-48b5-b190-66390cdf5269",
+              "name": "Query executed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    "queries",
+                    "adhoc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "SELECT * FROM /orders WHERE status='PENDING'"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "91fd977f-780f-443a-bcbf-264a104e77ea",
+    "name": "Apache Geode REST Administration Queries API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing data in Apache Geode in-memory data grid, including region operations, OQL queries, function execution, and cluster monitoring.\n\nContact Support:\n Email: dev@geode.apache.org",
+      "type": "text/plain"
+    }
+  }
+}

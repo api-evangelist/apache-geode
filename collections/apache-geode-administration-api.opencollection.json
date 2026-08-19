@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Geode REST Administration API",
+    "version": "1.15.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Administration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Geode Ping Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/geode/v1/ping"
+          },
+          "docs": "Health check endpoint to verify the Geode REST API is running."
+        },
+        {
+          "info": {
+            "name": "Apache Geode List Cluster Servers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/geode/v1/servers"
+          },
+          "docs": "List all cache servers in the Geode cluster."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

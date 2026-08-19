@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Geode REST Administration Functions API",
+    "version": "1.15.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Functions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Geode List Available Functions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/geode/v1/functions"
+          },
+          "docs": "List all functions deployed and available in the Geode cluster."
+        },
+        {
+          "info": {
+            "name": "Apache Geode Execute Server Function",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/geode/v1/functions/:functionId",
+            "params": [
+              {
+                "name": "functionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the function to execute"
+              },
+              {
+                "name": "onRegion",
+                "value": "",
+                "type": "query",
+                "description": "Execute function on a specific region"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute a named function deployed on the Geode cluster."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

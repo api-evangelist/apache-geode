@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Geode REST Administration Queries API",
+    "version": "1.15.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Queries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Geode List Saved Queries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/geode/v1/queries"
+          },
+          "docs": "List all named OQL queries saved in the Geode cluster."
+        },
+        {
+          "info": {
+            "name": "Apache Geode Create Named Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/geode/v1/queries",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Unique query identifier"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "OQL query string"
+              }
+            ]
+          },
+          "docs": "Create and save a named OQL query."
+        },
+        {
+          "info": {
+            "name": "Apache Geode Execute Ad-Hoc Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/geode/v1/queries/adhoc",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "OQL query string to execute"
+              }
+            ]
+          },
+          "docs": "Execute an OQL query against the Geode data grid without saving it."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

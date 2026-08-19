@@ -1,0 +1,168 @@
+{
+  "item": [
+    {
+      "id": "b80300a5-2427-417c-aae3-09a79ebd633e",
+      "name": "Administration",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "076fea39-77f8-4e18-849c-0518c9662e73",
+          "name": "Apache Geode Ping Cluster",
+          "request": {
+            "name": "Apache Geode Ping Cluster",
+            "description": {
+              "content": "Health check endpoint to verify the Geode REST API is running.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geode",
+                "v1",
+                "ping"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6737adc8-8413-49cf-af26-22a29f60073a",
+              "name": "Cluster is healthy and reachable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    "ping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b431796-0563-4ea2-ae60-a9b7729be902",
+          "name": "Apache Geode List Cluster Servers",
+          "request": {
+            "name": "Apache Geode List Cluster Servers",
+            "description": {
+              "content": "List all cache servers in the Geode cluster.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geode",
+                "v1",
+                "servers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fbd8e0f5-0ecc-47bb-9127-8569465bf785",
+              "name": "Cluster servers listed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geode",
+                    "v1",
+                    "servers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"servers\": [\n    \"localhost:40404\",\n    \"geode-server-02:40404\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "68ea33f5-4b3e-4ed5-90cb-15df761a58eb",
+    "name": "Apache Geode REST Administration API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for accessing and managing data in Apache Geode in-memory data grid, including region operations, OQL queries, function execution, and cluster monitoring.\n\nContact Support:\n Email: dev@geode.apache.org",
+      "type": "text/plain"
+    }
+  }
+}

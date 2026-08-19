@@ -1,0 +1,165 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Geode REST Administration Regions API",
+    "version": "1.15.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Regions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Geode List All Regions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/geode/v1"
+          },
+          "docs": "List all regions available in the Apache Geode data grid."
+        },
+        {
+          "info": {
+            "name": "Apache Geode Get Region Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/geode/v1/:region",
+            "params": [
+              {
+                "name": "region",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Geode region"
+              }
+            ]
+          },
+          "docs": "Retrieve all data from a specific region in the Geode data grid."
+        },
+        {
+          "info": {
+            "name": "Apache Geode Clear Region",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/geode/v1/:region",
+            "params": [
+              {
+                "name": "region",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Geode region to clear"
+              }
+            ]
+          },
+          "docs": "Delete all entries from a region."
+        },
+        {
+          "info": {
+            "name": "Apache Geode Get Region Keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/geode/v1/:region/keys",
+            "params": [
+              {
+                "name": "region",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Geode region"
+              }
+            ]
+          },
+          "docs": "Retrieve all keys from a specific region."
+        },
+        {
+          "info": {
+            "name": "Apache Geode Get Region Entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/geode/v1/:region/:key",
+            "params": [
+              {
+                "name": "region",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Geode region"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "The entry key"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific key-value entry from a region."
+        },
+        {
+          "info": {
+            "name": "Apache Geode Update Region Entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8080/geode/v1/:region/:key",
+            "params": [
+              {
+                "name": "region",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Geode region"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "The entry key"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update an entry in a region."
+        },
+        {
+          "info": {
+            "name": "Apache Geode Delete Region Entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/geode/v1/:region/:key",
+            "params": [
+              {
+                "name": "region",
+                "value": "",
+                "type": "path",
+                "description": "The name of the Geode region"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "The entry key to delete"
+              }
+            ]
+          },
+          "docs": "Remove a specific entry from a region."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
