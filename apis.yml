@@ -27,6 +27,13 @@ tags:
   - Data Grid
   - Distributed Systems
   - In-Memory
+  - Open-Source
+tags_raw:
+  - Apache
+  - Caching
+  - Data Grid
+  - Distributed Systems
+  - In-Memory
   - Open Source
 created: '2026-03-16'
 modified: '2026-05-19'
@@ -88,6 +95,8 @@ apis:
   humanURL: https://geode.apache.org/docs/guide/latest/rest_apps/chapter_overview.html
   baseURL: http://localhost:8080
   tags:
+  - Query
+  tags_raw:
   - Queries
   properties:
   - type: OpenAPI
