@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Apache Geode REST Administration Regions API
+  title: Apache Geode REST Regions API
   version: 1.15.0
   description: REST API for accessing and managing data in Apache Geode in-memory data grid, including region operations, OQL queries, function execution, and cluster monitoring.
   contact:
@@ -207,10 +207,28 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    RegionData:
+    RegionInfo:
       type: object
-      description: Data entries from a Geode region
-      additionalProperties: true
+      description: Metadata about a Geode region
+      properties:
+        name:
+          type: string
+          description: Region name
+          example: orders
+        type:
+          type: string
+          description: Region type (REPLICATE, PARTITION, etc.)
+          example: PARTITION
+        keyConstraint:
+          type:
+          - string
+          - 'null'
+          description: Java class constraint for keys, or null
+        valueConstraint:
+          type:
+          - string
+          - 'null'
+          description: Java class constraint for values, or null
     KeyListResponse:
       type: object
       description: Response containing all keys in a region
@@ -233,23 +251,7 @@ components:
           description: List of region descriptors
           items:
             $ref: '#/components/schemas/RegionInfo'
-    RegionInfo:
+    RegionData:
       type: object
-      description: Metadata about a Geode region
-      properties:
-        name:
-          type: string
-          description: Region name
-          example: orders
-        type:
-          type: string
-          description: Region type (REPLICATE, PARTITION, etc.)
-          example: PARTITION
-        keyConstraint:
-          type: string
-          description: Java class constraint for keys, or null
-          nullable: true
-        valueConstraint:
-          type: string
-          description: Java class constraint for values, or null
-          nullable: true
+      description: Data entries from a Geode region
+      additionalProperties: true

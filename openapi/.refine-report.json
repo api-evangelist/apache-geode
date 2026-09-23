@@ -1,10 +1,7 @@
 {
   "provider": "apache-geode",
   "sources": [
-    "apache-geode-administration-api-openapi.yml",
-    "apache-geode-functions-api-openapi.yml",
-    "apache-geode-queries-api-openapi.yml",
-    "apache-geode-regions-api-openapi.yml"
+    "_original/apache-geode-rest-openapi.yml"
   ],
   "outputs": [
     "apache-geode-administration-api-openapi.yml",
@@ -15,6 +12,19 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "apache-geode-rest-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apache-geode-rest-openapi.yml: declared missing tag: Administration",
+    "apache-geode-rest-openapi.yml: declared missing tag: Functions",
+    "apache-geode-rest-openapi.yml: declared missing tag: Queries",
+    "apache-geode-rest-openapi.yml: declared missing tag: Regions",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "apache-geode-administration-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "apache-geode-functions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "apache-geode-queries-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "apache-geode-regions-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
