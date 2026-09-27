@@ -97,15 +97,6 @@ components:
           type: string
           description: OQL query string
           example: SELECT * FROM /orders WHERE status='PENDING'
-    QueryListResponse:
-      type: object
-      description: Response containing list of saved OQL queries
-      properties:
-        queries:
-          type: array
-          description: List of saved queries
-          items:
-            $ref: '#/components/schemas/QueryInfo'
     QueryResult:
       type: object
       description: Results from an OQL query execution
@@ -115,3 +106,12 @@ components:
           description: Query result objects
           items:
             type: object
+    QueryListResponse:
+      type: object
+      description: Response containing list of saved OQL queries
+      properties:
+        queries:
+          type: array
+          description: List of saved queries
+          items:
+            $ref: '#/components/schemas/QueryInfo'
