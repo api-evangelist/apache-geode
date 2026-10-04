@@ -85,24 +85,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    QueryListResponse:
-      type: object
-      description: Response containing list of saved OQL queries
-      properties:
-        queries:
-          type: array
-          description: List of saved queries
-          items:
-            $ref: '#/components/schemas/QueryInfo'
-    QueryResult:
-      type: object
-      description: Results from an OQL query execution
-      properties:
-        result:
-          type: array
-          description: Query result objects
-          items:
-            type: object
     QueryInfo:
       type: object
       description: Named OQL query metadata
@@ -115,3 +97,21 @@ components:
           type: string
           description: OQL query string
           example: SELECT * FROM /orders WHERE status='PENDING'
+    QueryResult:
+      type: object
+      description: Results from an OQL query execution
+      properties:
+        result:
+          type: array
+          description: Query result objects
+          items:
+            type: object
+    QueryListResponse:
+      type: object
+      description: Response containing list of saved OQL queries
+      properties:
+        queries:
+          type: array
+          description: List of saved queries
+          items:
+            $ref: '#/components/schemas/QueryInfo'

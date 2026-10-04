@@ -207,10 +207,19 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    RegionData:
+    KeyListResponse:
       type: object
-      description: Data entries from a Geode region
-      additionalProperties: true
+      description: Response containing all keys in a region
+      properties:
+        keys:
+          type: array
+          description: List of region keys
+          items:
+            type: string
+          example:
+          - order-001
+          - order-002
+          - order-003
     RegionInfo:
       type: object
       description: Metadata about a Geode region
@@ -242,16 +251,7 @@ components:
           description: List of region descriptors
           items:
             $ref: '#/components/schemas/RegionInfo'
-    KeyListResponse:
+    RegionData:
       type: object
-      description: Response containing all keys in a region
-      properties:
-        keys:
-          type: array
-          description: List of region keys
-          items:
-            type: string
-          example:
-          - order-001
-          - order-002
-          - order-003
+      description: Data entries from a Geode region
+      additionalProperties: true

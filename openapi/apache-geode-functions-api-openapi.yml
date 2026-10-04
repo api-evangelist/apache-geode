@@ -68,6 +68,15 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    FunctionResult:
+      type: object
+      description: Results from function execution
+      properties:
+        result:
+          type: array
+          description: Function return values
+          items:
+            type: object
     FunctionListResponse:
       type: object
       description: Response containing list of available functions
@@ -80,12 +89,3 @@ components:
           example:
           - calculateTotals
           - cleanupExpired
-    FunctionResult:
-      type: object
-      description: Results from function execution
-      properties:
-        result:
-          type: array
-          description: Function return values
-          items:
-            type: object
