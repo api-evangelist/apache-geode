@@ -1,0 +1,26 @@
+slug: apache-geode
+provider: Apache Geode
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Administration
+  spec_file: apache-geode-administration-api-openapi.yml
+  capability_id: BC-600.40
+  capability_id_l1: BC-600
+  capability_name: IT Operations Management
+  confidence: 0.7
+  evidence: GET /geode/v1/ping  pingCluster ... GET /geode/v1/servers  listServers  Apache Geode List
+    Cluster Servers
+  reason: Cluster health ping and server listing are IT operations monitoring of an in-memory data grid
+    cluster — infrastructure/ops management, not a business capability. Mapped at low-moderate confidence
+    to IT Operations Management; could equally be seen as plumbing.

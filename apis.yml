@@ -138,6 +138,9 @@ apis:
   - type: JSONLD
     url: json-ld/apache-geode-rest-context.jsonld
 common:
+  - type: CapabilityMap
+    url: capabilities/apache-geode-capability-edges.yml
+    name: Apache Geode Business Capability Map
   - type: Website
     url: https://www.apache.org/
   - type: Releases
