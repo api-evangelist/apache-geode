@@ -207,6 +207,10 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    RegionData:
+      type: object
+      description: Data entries from a Geode region
+      additionalProperties: true
     KeyListResponse:
       type: object
       description: Response containing all keys in a region
@@ -220,6 +224,15 @@ components:
           - order-001
           - order-002
           - order-003
+    RegionListResponse:
+      type: object
+      description: Response containing list of all Geode regions
+      properties:
+        regions:
+          type: array
+          description: List of region descriptors
+          items:
+            $ref: '#/components/schemas/RegionInfo'
     RegionInfo:
       type: object
       description: Metadata about a Geode region
@@ -242,16 +255,3 @@ components:
           - string
           - 'null'
           description: Java class constraint for values, or null
-    RegionListResponse:
-      type: object
-      description: Response containing list of all Geode regions
-      properties:
-        regions:
-          type: array
-          description: List of region descriptors
-          items:
-            $ref: '#/components/schemas/RegionInfo'
-    RegionData:
-      type: object
-      description: Data entries from a Geode region
-      additionalProperties: true

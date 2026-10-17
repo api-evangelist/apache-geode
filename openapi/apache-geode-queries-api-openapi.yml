@@ -85,6 +85,15 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    QueryListResponse:
+      type: object
+      description: Response containing list of saved OQL queries
+      properties:
+        queries:
+          type: array
+          description: List of saved queries
+          items:
+            $ref: '#/components/schemas/QueryInfo'
     QueryInfo:
       type: object
       description: Named OQL query metadata
@@ -106,12 +115,3 @@ components:
           description: Query result objects
           items:
             type: object
-    QueryListResponse:
-      type: object
-      description: Response containing list of saved OQL queries
-      properties:
-        queries:
-          type: array
-          description: List of saved queries
-          items:
-            $ref: '#/components/schemas/QueryInfo'
