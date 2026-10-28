@@ -1,4 +1,4 @@
-# Apache Geode (apache-geode)
+# Apache Geode
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,88 +66,188 @@
 
 Apache Geode is an in-memory data management platform that provides real-time, consistent access to data-intensive applications throughout widely distributed cloud architectures. It pools memory, CPU, network resources, and local disk storage across multiple processes, offering a REST API for data access, OQL queries, function execution, and cluster management.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/apache-geode/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/apache-geode/refs/heads/main/apis.yml)
+**Areas:** Apache · Caching · Data Grid · Distributed Systems · In-Memory · Open Source
 
-## Scope
+## Apache Geode on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Apache Geode is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/apache-geode/](https://apis.io/providers/apache-geode/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- Apache
-- Caching
-- Data Grid
-- Distributed Systems
-- In-Memory
-- Open Source
+- [Apache Geode Java Client API](https://apis.io/apis/apache-geode/apache-geode-java-api/) — Java API for cache operations, continuous queries, function execution, and data serialization in Apache Geode clusters.
+- [Apache Geode Administration API](https://apis.io/apis/apache-geode/apache-geode-administration-api/) — The Administration API from Apache Geode — 2 operation(s) for administration.
+- [Apache Geode Functions API](https://apis.io/apis/apache-geode/apache-geode-functions-api/) — The Functions API from Apache Geode — 2 operation(s) for functions.
+- [Apache Geode Queries API](https://apis.io/apis/apache-geode/apache-geode-queries-api/) — The Queries API from Apache Geode — 2 operation(s) for queries.
+- [Apache Geode Regions API](https://apis.io/apis/apache-geode/apache-geode-regions-api/) — The Regions API from Apache Geode — 4 operation(s) for regions.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-16
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Apache Geode REST API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-REST API for accessing and managing data in Apache Geode in-memory data grid, including region operations, OQL queries, function execution, and cluster monitoring.
+- [Apache Geode Agentic Access](https://apis.io/agentic-access/apache-geode/apache-geode-agentic-access/)
 
-- **Human URL:** [https://geode.apache.org/docs/guide/latest/rest_apps/chapter_overview.html](https://geode.apache.org/docs/guide/latest/rest_apps/chapter_overview.html)
-- **Base URL:** `http://localhost:8080`
+#### JSON Schema (10)
 
-#### Tags
+The data models the API reads and writes.
 
-- Cache
-- Data Grid
-- In-Memory
-- OQL
-- REST
+- [FunctionListResponse](https://apis.io/schemas/apache-geode/geode-rest-function-list-response/)
+- [FunctionResult](https://apis.io/schemas/apache-geode/geode-rest-function-result/)
+- [KeyListResponse](https://apis.io/schemas/apache-geode/geode-rest-key-list-response/)
+- [QueryInfo](https://apis.io/schemas/apache-geode/geode-rest-query-info/)
+- [QueryListResponse](https://apis.io/schemas/apache-geode/geode-rest-query-list-response/)
+- [QueryResult](https://apis.io/schemas/apache-geode/geode-rest-query-result/)
+- [RegionData](https://apis.io/schemas/apache-geode/geode-rest-region-data/)
+- [RegionInfo](https://apis.io/schemas/apache-geode/geode-rest-region-info/)
+- [RegionListResponse](https://apis.io/schemas/apache-geode/geode-rest-region-list-response/)
+- [ServerListResponse](https://apis.io/schemas/apache-geode/geode-rest-server-list-response/)
 
-#### Properties
+#### JSON Structure (10)
 
-- [Documentation](https://geode.apache.org/docs/guide/latest/rest_apps/chapter_overview.html)
-- [OpenAPI](openapi/apache-geode-rest-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/apache-geode-rest.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/apache-geode-rest.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/geode-rest-region-info-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/apache-geode-rest-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+Data models expressed in JSON Structure.
 
-### Apache Geode Java Client API
+- [Geode Rest Function List Response Structure](https://apis.io/json-structure/apache-geode/geode-rest-function-list-response-structure/)
+- [Geode Rest Function Result Structure](https://apis.io/json-structure/apache-geode/geode-rest-function-result-structure/)
+- [Geode Rest Key List Response Structure](https://apis.io/json-structure/apache-geode/geode-rest-key-list-response-structure/)
+- [Geode Rest Query Info Structure](https://apis.io/json-structure/apache-geode/geode-rest-query-info-structure/)
+- [Geode Rest Query List Response Structure](https://apis.io/json-structure/apache-geode/geode-rest-query-list-response-structure/)
+- [Geode Rest Query Result Structure](https://apis.io/json-structure/apache-geode/geode-rest-query-result-structure/)
+- [Geode Rest Region Data Structure](https://apis.io/json-structure/apache-geode/geode-rest-region-data-structure/)
+- [Geode Rest Region Info Structure](https://apis.io/json-structure/apache-geode/geode-rest-region-info-structure/)
+- [Geode Rest Region List Response Structure](https://apis.io/json-structure/apache-geode/geode-rest-region-list-response-structure/)
+- [Geode Rest Server List Response Structure](https://apis.io/json-structure/apache-geode/geode-rest-server-list-response-structure/)
 
-Java API for cache operations, continuous queries, function execution, and data serialization in Apache Geode clusters.
+#### JSON-LD (1)
 
-- **Human URL:** [https://geode.apache.org/docs/guide/latest/developing/book_intro.html](https://geode.apache.org/docs/guide/latest/developing/book_intro.html)
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Apache Geode Rest Context](https://apis.io/jsonld/apache-geode/apache-geode-rest-context/)
 
-- Java
-- SDK
-- Cache
-- Continuous Query
+#### Vocabulary (1)
 
-#### Properties
+The provider's domain terms, defined.
 
-- [Documentation](https://geode.apache.org/docs/guide/latest/developing/book_intro.html)
-- [SDK](https://search.maven.org/artifact/org.apache.geode/geode-core)
-- [Postman Collection](collections/apache-geode-rest.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/apache-geode-rest.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Apache Geode Vocabulary](https://apis.io/vocabularies/apache-geode/apache-geode-vocabulary/)
 
-## Common Properties
+#### Examples (10)
 
+Example requests and responses.
+
+- [Geode Rest Function List Response Example](https://apis.io/examples/apache-geode/geode-rest-function-list-response-example/)
+- [Geode Rest Function Result Example](https://apis.io/examples/apache-geode/geode-rest-function-result-example/)
+- [Geode Rest Key List Response Example](https://apis.io/examples/apache-geode/geode-rest-key-list-response-example/)
+- [Geode Rest Query Info Example](https://apis.io/examples/apache-geode/geode-rest-query-info-example/)
+- [Geode Rest Query List Response Example](https://apis.io/examples/apache-geode/geode-rest-query-list-response-example/)
+- [Geode Rest Query Result Example](https://apis.io/examples/apache-geode/geode-rest-query-result-example/)
+- [Geode Rest Region Data Example](https://apis.io/examples/apache-geode/geode-rest-region-data-example/)
+- [Geode Rest Region Info Example](https://apis.io/examples/apache-geode/geode-rest-region-info-example/)
+- [Geode Rest Region List Response Example](https://apis.io/examples/apache-geode/geode-rest-region-list-response-example/)
+- [Geode Rest Server List Response Example](https://apis.io/examples/apache-geode/geode-rest-server-list-response-example/)
+
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [Apache Geode REST Administration API](https://apis.io/collections/apache-geode/open-apache-geode-administration-api/)
+- [Apache Geode REST Administration Functions API](https://apis.io/collections/apache-geode/open-apache-geode-functions-api/)
+- [Apache Geode REST Administration Queries API](https://apis.io/collections/apache-geode/open-apache-geode-queries-api/)
+- [Apache Geode REST Administration Regions API](https://apis.io/collections/apache-geode/open-apache-geode-regions-api/)
+- [Apache Geode REST API](https://apis.io/collections/apache-geode/open-apache-geode-rest/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Apache Geode — jsonschema rules](https://apis.io/rules/apache-geode/apache-geode-jsonschema-spectral-rules/)
+- [Apache Geode API Rules](https://apis.io/rules/apache-geode/apache-geode-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Apache Geode Domain Security](https://apis.io/security/apache-geode/apache-geode-domain-security/)
+- [Apache Geode Vulnerability Disclosure](https://apis.io/security/apache-geode/apache-geode-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Apache Geode Plans Pricing](https://apis.io/plans/apache-geode/apache-geode-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Apache Geode Rate Limits](https://apis.io/rate-limits/apache-geode/apache-geode-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Apache Geode Finops](https://apis.io/finops/apache-geode/apache-geode-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.apache.org/)
 - [Documentation](https://geode.apache.org/docs/)
-- [Getting Started](https://geode.apache.org/docs/guide/latest/getting_started/book_intro.html)
-- [GitHub Organization](https://github.com/apache)
-- [GitHub Repository](https://github.com/apache/geode)
+- [Getting started](https://geode.apache.org/docs/guide/latest/getting_started/book_intro.html)
 - [Blog](https://geode.apache.org/blog/)
-- [Spectral Rules](rules/apache-geode-spectral-rules.yml)
-- [Vocabulary](vocabulary/apache-geode-vocabulary.yaml)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
+- [GitHub](https://github.com/apache)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** info@apievangelist.com
+**Kin Score 32.3** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 49.8 |
+| Contract governance | 27.3 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 7.9 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 13.9** — Energy & Utilities
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/apache-geode/](https://apis.io/providers/apache-geode/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Apache Geode: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/apache-geode/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
